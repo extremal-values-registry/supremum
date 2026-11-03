@@ -11,5 +11,5 @@ authors:
 identifiers:
   - type: doi
     description: "Concept DOI, all versions"
-repository-code: "https://github.com/extremal-values-registry/extremal-values-registry"
+repository-code: "https://github.com/extremal-values-registry/supremum"
 abstract: "A registry of best-known values for extremal problems: one entry per problem variant, with definition, current value, source, superseded chain and verifier."

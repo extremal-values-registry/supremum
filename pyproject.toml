@@ -17,7 +17,7 @@ test = ["pytest"]
 ingest = ["pymupdf"]
 
 [project.urls]
-Repository = "https://github.com/extremal-values-registry/extremal-values-registry"
+Repository = "https://github.com/extremal-values-registry/supremum"
 
 [project.scripts]
 evr-validate = "validate:main"

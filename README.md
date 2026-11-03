@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://extremal-values-registry.github.io/extremal-values-registry/"><b>Website</b></a> ·
-  <a href="https://extremal-values-registry.github.io/extremal-values-registry/browse.html">Browse entries</a> ·
+  <a href="https://extremal-values-registry.github.io/supremum/"><b>Website</b></a> ·
+  <a href="https://extremal-values-registry.github.io/supremum/browse.html">Browse entries</a> ·
   <a href="docs/STANDARD.md">Standard</a> ·
   <a href="docs/CITING.md">Cite</a> ·
   <a href="https://github.com/extremal-values-registry/freshcheck">freshcheck</a>
@@ -36,8 +36,8 @@ instead of copying a number that goes stale.
 ## 60-second tour
 
 ```
-git clone https://github.com/extremal-values-registry/extremal-values-registry
-cd extremal-values-registry
+git clone https://github.com/extremal-values-registry/supremum
+cd supremum
 python tools/validate.py                       # 1034 entries, 1 with certificates, 231 claims: OK
 cd certificates/third_autocorrelation_abs_inside
 python -I verify.py construction.json          # exact check, under a second
