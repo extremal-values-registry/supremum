@@ -2,7 +2,7 @@
 
   python tools/export.py [--entries data/entries.jsonl] [--out dist]
 
-Writes <out>/entries.csv, <out>/index.html, <out>/entries/EV-NNNNNN.html and the
+Writes <out>/entries.csv, <out>/browse.html, <out>/entries/EV-NNNNNN.html and the
 shields.io endpoint badges under <out>/badge/ (see tools/badges.py). Stdlib only.
 """
 
@@ -97,7 +97,12 @@ def provenance_html(e):
     p = e["provenance"]
     rows = "".join(
         "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
-        % (esc(r["section"]), esc(r["date"]), esc(r.get("ai_systems")), esc(r["outcome"]))
+        % (
+            esc(r["section"]),
+            esc(r["date"]),
+            esc(r.get("ai_systems")),
+            esc(r["outcome"]),
+        )
         for r in p.get("records", [])
     )
     out = "<p>Set by: <b>%s</b>. Literature: %s. First public: %s.<br>Where: %s</p>" % (
@@ -107,7 +112,9 @@ def provenance_html(e):
         esc(p["platform_or_paper"]),
     )
     if p.get("verification_state"):
-        out += "<p>Verification state (source's colour): %s</p>" % esc(p["verification_state"])
+        out += "<p>Verification state (source's colour): %s</p>" % esc(
+            p["verification_state"]
+        )
     if p.get("basis"):
         out += "<p class=muted>Basis: %s</p>" % esc(p["basis"])
     if rows:
@@ -122,7 +129,10 @@ def fidelity_html(e):
     f = e["fidelity"]
     if not f:
         return "<p class=muted>No formal statement recorded for this entry.</p>"
-    return "<p>Statement audit: <b>%s</b>. %s</p>" % (esc(f["statement_audit"]), esc(f["audit_note"]))
+    return "<p>Statement audit: <b>%s</b>. %s</p>" % (
+        esc(f["statement_audit"]),
+        esc(f["audit_note"]),
+    )
 
 
 def feasibility_html(e):
@@ -186,7 +196,7 @@ def entry_page(e):
         else "<p class=muted>No certificate in this registry; the value rests on the cited source.</p>"
     )
     body = [
-        '<p><a href="../index.html">All entries</a></p>',
+        '<p><a href="../browse.html">All entries</a></p>',
         "<h1>%s</h1><p class=muted>%s &middot; %s &middot; status %s</p>"
         % (
             esc(e["id"]),
@@ -235,7 +245,9 @@ def export(entries, out):
     with open(
         os.path.join(out, "entries.csv"), "w", encoding="utf-8", newline=""
     ) as fh:
-        w = csv.DictWriter(fh, fieldnames=CSV_COLUMNS, lineterminator="\n")  # LF, as .gitattributes stores it
+        w = csv.DictWriter(
+            fh, fieldnames=CSV_COLUMNS, lineterminator="\n"
+        )  # LF, as .gitattributes stores it
         w.writeheader()
         for e in entries:
             w.writerow(row_for_csv(e))
@@ -253,7 +265,8 @@ def export(entries, out):
         )
         for e in entries
     )
-    with open(os.path.join(out, "index.html"), "w", encoding="utf-8") as fh:
+    # index.html is the hand-written landing page; the generated table lives at browse.html.
+    with open(os.path.join(out, "browse.html"), "w", encoding="utf-8") as fh:
         fh.write(
             page(
                 "Extremal values registry",

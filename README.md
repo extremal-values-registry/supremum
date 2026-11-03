@@ -1,14 +1,36 @@
-# Extremal Values Registry
+<p align="center">
+  <img src="docs/assets/supremum.svg" width="88" alt="Supremum logo">
+</p>
 
-**A quarter of the "best known" values in AI-math benchmarks are already beaten. This registry tracks the real frontier.**
+<h1 align="center">Supremum</h1>
 
-![License: CC BY 4.0 + MIT](https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-green)
-![entries: 1034](https://img.shields.io/badge/entries-1034-informational)
-![verified certificates: 1](https://img.shields.io/badge/verified%20certificates-1-success)
+<p align="center">
+  <b>The live frontier of extremal mathematics.</b><br>
+  The Extremal Values Registry: one entry per problem variant, with its definition, current value, source and superseded chain.
+</p>
+
+<p align="center">
+  <a href="https://extremal-values-registry.github.io/extremal-values-registry/"><b>Website</b></a> ·
+  <a href="https://extremal-values-registry.github.io/extremal-values-registry/browse.html">Browse entries</a> ·
+  <a href="docs/STANDARD.md">Standard</a> ·
+  <a href="docs/CITING.md">Cite</a> ·
+  <a href="https://github.com/extremal-values-registry/freshcheck">freshcheck</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/entries-1034-13213a" alt="entries: 1034">
+  <img src="https://img.shields.io/badge/families-18-13213a" alt="families: 18">
+  <img src="https://img.shields.io/badge/verified%20certificates-1-2f7a55" alt="verified certificates: 1">
+  <img src="https://img.shields.io/badge/release-weekly-b8862b" alt="release: weekly">
+  <img src="https://img.shields.io/badge/license-CC%20BY%204.0%20%2B%20MIT-5d6475" alt="License: CC BY 4.0 + MIT">
+  <a href="https://doi.org/10.5281/zenodo.23326558"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23326558-1f4f8f" alt="DOI"></a>
+</p>
+
+---
 
 One entry per problem **variant**: the exact definition, the current best value, the source,
 the chain of values it superseded, and the names that benchmarks and leaderboards use for
-it. Think of OEIS, but for best-known bounds. A benchmark can pin an entry id (`EV-000004`)
+it. Think of OEIS, but for current bounds. A benchmark can pin an entry id (`EV-000004`)
 instead of copying a number that goes stale.
 
 ## 60-second tour
@@ -54,25 +76,21 @@ by the verifier result, not by the maintainer. Releases: `CHANGELOG.md`; a relea
 
 ## Why it exists
 
-tables used to evaluate and report AI-driven mathematics (HorizonMath, the Optimization
-Constants in Mathematics table, EinsteinArena, and two AlphaEvolve result sets):
+Benchmarks for AI-driven mathematics score each new result against a reference value copied
+from somewhere, and those copies drift. `data/priority_claims.jsonl` traces 231 announced
+AI-discovery improvements back to the literature:
 
-- **69 of 268 targets (25.7%)** are superseded or not scoreable as written.
-- **48 of 231 AI-discovery improvement claims (20.8%)** had an equal-or-better value published
-  before the claim; **17 (7.4%)** came from a third party the claimant did not cite.
-- Correcting **five** stale values on one public arena leaderboard reorders its top 10
-  (**7 reversals**), and **57%** of recorded "beats" sat on stale rows.
-- **603 of 603** public records re-scored with their benchmarks' own validators were valid:
-  the records are fine, the reference values are what rot. Checked against the problems'
-  written definitions instead of the validators, some are not: see `feasibility` below.
-- Classical OR libraries (TSPLIB, QAPLIB, CVRPLIB, MIPLIB, OR-Library) showed **0 stale rows
-  of 158**. The decay is specific to young AI-era tables, which is why they need a registry.
+- **43 of 231 (18.6%)** had an equal-or-better value published before the claim.
+- **9 of 231 (3.9%; 95% interval 2.1–7.2%)** came from a third party the claimant did not cite.
+- **29** cannot be ordered either way from the published numbers and are kept as `UNCLEAR`.
+
+Each row records the prior value, its source and date, and a note on how it was checked.
 
 This registry holds **1034 entries** (970 current, 50 unclear, 14 malformed) and **231 priority
-claims** linked to entry ids: the 322 audited benchmark variants, 405 Erdős problems from the
+claims** (27 linked to entry ids). The entries cover the 322 audited benchmark variants, 405 Erdős problems from the
 AI-contributions wiki (frozen 2026-06-30) and the 72 cells of the classical two-colour Ramsey
 table R(k,l), k <= l <= 15, from Radziszowski's survey DS1, 144 cells (n <= 50) of four tables
-of Erich Friedman's Packing Center, and 91 new cells (plus 6 cross-linked) of Henry Cohn's kissing-number
+of Erich Friedman's Packing Center, and 91 cells (plus 6 cross-linked) of Henry Cohn's kissing-number
 and sphere-packing tables, dimensions 1-48. To audit your own table, use
 the sibling [`freshcheck`](https://github.com/extremal-values-registry/freshcheck) repository (same owner; the registry accepts its row format via `tools/check_freshness.py`).
 

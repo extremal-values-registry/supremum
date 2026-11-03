@@ -2,6 +2,13 @@
 
 Weekly releases are tagged `vYYYY.MM.DD` by `.github/workflows/weekly-release.yml`.
 
+## Unreleased
+
+- New name and site: Supremum. The landing page is `docs/index.html`; the generated entry
+  table moves to `docs/browse.html` (`tools/export.py` now writes `browse.html`).
+- priority_claims: 8 verdicts re-checked against primary sources (2026-11-03). Third-party
+  pre-emption is now 9 of 231 claims (3.9%); equal-or-better before the claim, 43 of 231.
+
 ## v2026.10.13
 
 - Provenance, fidelity and feasibility fields on every entry (SCHEMA.md).
