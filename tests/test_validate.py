@@ -64,10 +64,12 @@ def test_real_registry_validates():
 def test_real_certificate_value():
     rows = read(os.path.join(ROOT, "data", "entries.jsonl"))
     certified = [e for e in rows if e["certificate"]["file"]]
-    assert len(certified) == 1
-    e = certified[0]
-    assert e["direction"] == "min" and e["current_value"] < 1.4688
-    assert validate.run_verifier(e, ROOT) is None
+    assert len(certified) >= 2
+    by_id = {e["id"]: e for e in certified}
+    assert by_id["EV-000004"]["direction"] == "min" and by_id["EV-000004"]["current_value"] < 1.4688
+    assert by_id["EV-000024"]["direction"] == "min" and by_id["EV-000024"]["current_value"] < 1.280932
+    for e in certified:
+        assert validate.run_verifier(e, ROOT) is None
 
 
 def test_standard_version_absent_is_fine(reg):

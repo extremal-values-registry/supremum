@@ -95,7 +95,7 @@ def test_every_entry_has_provenance_and_curated_has_fidelity():
 def test_feasibility_cites_public_endpoint_only():
     rows = read(REAL)
     checked = [e for e in rows if (e["feasibility"] or {}).get("definition_checked")]
-    assert len(checked) == 12
+    assert len(checked) == 11
     for e in checked:
         assert e["feasibility"]["check_source"].startswith(
             "https://einsteinarena.com/api/solutions/best?problem_id="
